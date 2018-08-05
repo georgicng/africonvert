@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="blog_comment_post">
+        <div class="row">
+            <div class="inn_blog_comment_post">
+                <div class="col-xs-3 col-sm-2 col-md-3">
+                    <div class="blog_img_commentdiv">
+                        <div class="inn_blog_img_commentdiv" ng-if="comment.author > 0">
+                            <a ng-href="/members/{{comment.author}}"><img class="img-responsive" ng-src="{{comment.author_avatar}}" style="width:100%"></a>
+                        </div>
+                        <div class="inn_blog_img_commentdiv" ng-if="comment.author === 0">
+                            <img class="img-responsive" ng-src="{{comment.author_avatar}}" style="width:100%">
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-xs-9 col-sm-10 col-md-9" ng-init="comment.toggle = true">
+                    <div class="blog_post_name_div" ng-if="comment.author > 0"><a ng-href="/members/{{comment.author}}">{{comment.author_name}}</a> </div>
+                    <div class="blog_post_name_div" ng-if="comment.author === 0">{{comment.author_name}}</div>                    
+                    <div class="blog_post_time">{{comment.date | date:"dd MMM 'at' hh:mma" }} </div>
+                    <div class="inn_blog_contents">
+                        <p ng-bind-html="comment.content.rendered | to_trusted "></p>
+                        <div class="blog_gap_div"> <span><a href="" ng-click="comment.toggle = !comment.toggle">Reply</a>  </span> </div>
+                        <comment-form post="post" parent="comment.id" toggle="comment.toggle" uib-collapse="comment.toggle"></comment-form>
+                    </div>
+                    <div class="sub_comment_div" ng-repeat="child in comment.replies" ng-if="comment.replies_count > 0">
+                        <div class="row">
+                            <div class="col-xs-3 col-sm-2 col-md-2">
+                                <div class="sub_comment_img" ng-if="child.user_id !== '0'">
+                                    <a ng-href="/members/{{child.user_id}}"><img class="img-responsive" ng-src="{{child.user_avatar}}" style="width:100%"></a>
+                                </div>
+                                <div class="sub_comment_img" ng-if="child.user_id === '0'">
+                                    <img class="img-responsive" ng-src="{{child.user_avatar}}" style="width:100%">
+                                </div>
+                            </div>
+                            <div class="col-xs-9 col-sm-11 col-md-10">
+                                <div class="inn_sub_comment_div" ng-init="child.toggle = true">
+                                    <div class="blog_post_name_div" ng-if="child.user_id !== '0'"><a ng-href="/members/{{child.user_id}}">{{child.comment_author}}</a> </div>
+                                    <div class="blog_post_name_div" ng-if="child.user_id === '0'">{{child.comment_author}}</div>                                    
+                                    <div class="blog_post_time">{{child.comment_date | date:"dd MMM 'at' hh:mma" }} </div>
+                                    <div class="sub_inn_blog_contents">
+                                        <p ng-bind-html="child.comment_content | to_trusted "></p>
+                                        <div class="blog_gap_div"><span><a href="" ng-click="child.toggle = !child.toggle">Reply</a>  </span> </div>
+                                        <comment-form post="post" parent="comment.id" toggle="child.toggle" uib-collapse="child.toggle"></comment-form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

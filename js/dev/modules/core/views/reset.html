@@ -1,0 +1,22 @@
+<div class="modal-header">
+  <h3 class="modal-title" id="modal-title">Forgot Password</h3>
+</div>
+<form role="form" ng-submit='reset(user)' name='resetForm'>
+  <div class="modal-body">
+    <div class="row" ng-show="failed">
+      <div class="col-xs-12" style="text-align:center">
+          <p>{{errorMsg}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-md-offset-3 col-md-6 form-group">
+        <label>Email</label>
+        <input type="email" ng-model="user.email" class="form-control" placeholder="Enter Email" required>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button ng-click="cancel()" class="btn btn-default">Close</button>
+    <button ng-disabled="resetForm.$invalid" type="submit" class="btn btn-primary">Reset Password</button>
+  </div>
+</form>

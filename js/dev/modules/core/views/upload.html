@@ -1,0 +1,63 @@
+<div ng-hide="uploaded">
+    <h4>Upload your Entry</h4>
+    <form role="form" ng-submit='doUpload()' name="forms.upload">
+        <div>
+            <div class="row section">
+                <div class="col-xs-12 col-md-offset-3 col-md-6 form-group">
+                    <label>Media *</label>
+                    <!--input id="file" name="file" type="file" accept="video/mp4,video/x-m4v,video/*"-->
+                    <input type="file" ngf-select ng-model="uploadData.file" name="file" ngf-validate="validation" ngf-model-invalid="errorFile"
+                        accept="{{validation.pattern}}" required>
+                    <!--i ng-show="forms.upload.file.$error.required">*required</i-->
+                    <i ng-show="forms.upload.file.$error.maxSize">File too large</i>
+                    <i ng-show="forms.upload.file.$error.pattern">Wrong content format selected</i>
+                    <i ng-show="forms.upload.file.$error.minSize">File is too small</i>
+                </div>
+            </div>
+            <div class="row section">
+                <div class="col-xs-12 col-md-offset-3 col-md-6 form-group">
+                    <label>Name *</label>
+                    <input type="text" ng-model="uploadData.name" class="form-control" placeholder="Enter name for the media" required>
+                </div>
+            </div>
+            <div class="row section">
+                <div class="col-xs-12 col-md-offset-3 col-md-6 form-group">
+                    <label>Description *</label>
+                    <textarea ng-model="uploadData.description" class="form-control" placeholder="Describe the media" required> </textarea>
+                </div>
+            </div>
+            <div class="row section">
+                <div class="col-xs-12 col-md-offset-3 col-md-6 form-group">
+                    <label>Thumbnail *</label>
+                    <input type="file" ngf-select ng-model="uploadData.thumbnail" name="thumbnail" accept="image/*">
+                </div>
+            </div>
+            <button type="submit" ng-disabled="forms.upload.$invalid" class="btn btn-primary">Submit</button>
+            <div class="progress" ng-show="uploadData.file.progress >= 0">
+                <uib-progressbar value="uploadData.file.progress">{{uploadData.file.progress}}</uib-progressbar>
+            </div>
+        </div>
+    </form>
+</div>
+<div ng-show="uploaded">
+    <h4>Uploaded Entry</h4>
+    <div ng-switch="type">
+        <div class="comment_img " ng-switch-when="Video">
+            <video controls ngf-src="file"></video>
+        </div>
+        <div class="comment_img " ng-switch-when="Audio">
+            <audio controls ngf-src="file"></audio>
+        </div>
+        <div class="comment_img " ng-switch-when="Image">
+            <img ngf-thumbnail="file || '/thumb.jpg'">
+        </div>
+        <!--div class="comment_img " ng-switch-when="Document">
+      <iframe ng-src="{{getViewerURL(file)}}" frameborder="0" width="100%" height="366">
+      </iframe>
+    </div>
+    <div class="comment_img " ng-switch-when="PDF">
+      <iframe ng-src="{{getViewerURL(file)}}" frameborder="0" width="100%" height="366">
+      </iframe>
+    </div-->
+    </div>
+</div>

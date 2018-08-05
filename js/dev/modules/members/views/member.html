@@ -1,0 +1,150 @@
+<div class="container-fliud" id="container-fliud_bg">
+	<div class="row">
+		<div class="titl_bg_img_2  col-sm-12 col-md-12" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url({{post.cover_pic}}); background-size:cover; background-position:center">
+			<img class="img-responsive profile-image" ng-src="{{post.profile_pic}}" alt="{{post.name}}">
+			<div class="header">
+				<h1 ng-bind-html="post.name"></h1>
+				<h3 ng-bind-html="post.description"></h3>
+			</div>
+			<!--follow class="follow-button" author="post.id" following="isFollowing"></follow-->
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-md-10 col-md-offset-1">
+				<div class="card">
+					<uib-tabset active="1">
+						<!--uib-tab index="1" heading="Timeline" select="getActivities()">
+							<div class="row padding-vertical">
+								<div class="container">
+									<div class="row activities-container">
+										<p ng-if="activities == undefined">Loading timeline...</p>
+										<div ng-repeat="post in activities" class="media" ng-if="activities !== 'undefined' && activities.length > 0">
+											<div class="media-left">
+												<a href="#">
+													<img class="media-object" ng-src="{{post.avatar}}" alt="">
+												</a>
+											</div>
+											<div class="media-body">
+												<h4 class="media-heading" ng-bind-html="post.action"></h4>
+												<p ng-bind-html="post.content"></p>
+											</div>
+										</div>
+										<p ng-if="activities.length == 0">Nothing to show</p>
+										<button ng-hide="getting_activities || activity_next_page < 1" ng-click="moreActivities()">Load More</button>
+										<p ng-show="getting_activities">Loading data...</p>
+									</div>
+								</div>
+							</div>
+						</uib-tab-->
+						<uib-tab index="2" heading="Entries" select="getEntries()">
+							<div ng-if="entries == undefined">
+								<p class="loading">Loading entries</p>
+							</div>
+							<div class="row" ng-if="entries !== 'undefined' && entries.length > 0">
+								<div ng-repeat="post in entries" class="col-md-3 col-sm-6" id="img_card_div">
+									<div class="card_container">
+										<div class="img_card">
+											<img ng-src="{{post.featured_image_thumbnail_url?post.featured_image_thumbnail_url:post.acf.thumbnail}}" alt="{{post.title.rendered}}"
+											 style="width:100%">
+										</div>
+										<div class="img_card_details">
+											<div class="details" ng-bind-html="post.title.rendered"></div>
+											<div class="details">
+												<a ng-href="members/{{post.author}}" class="btn btn-default" role="button" ng-bind-html="post.author_name"></a>
+											</div>
+											<div class="enter_link">
+												<a ng-href="watch/{{post.id}}" class="btn btn-default" role="button">View</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div ng-if="entries.length == 0">
+								<p class="empty">No entries submitted yet</p>
+							</div>
+						</uib-tab>
+						<!--uib-tab index="3" heading="Awards" select="getAwards()">
+							<div class="row padding-vertical">
+								<div class="container">
+									<div class="row text-center">
+										<p ng-if="awards == undefined">Loading awards</p>
+										<div ng-repeat="post in awards" class="col-md-3 col-sm-6 hero-feature" ng-if="awards !== 'undefined' && awards.length > 0">
+											<div class="thumbnail">
+												<img ng-src="{{post.featured_image_thumbnail_url?post.featured_image_thumbnail_url:post.acf.thumbnail}}" alt="{{post.title.rendered}}">
+												<div class="caption">
+													<h3 ng-bind-html="post.title.rendered"></h3>
+													<p>
+														<a ng-href="members/{{post.author}}" class="btn btn-default" role="button" ng-bind-html="post.author_name"></a>
+													</p>
+													<p>
+														<a ng-href="watch/{{post.id}}" class="btn btn-default" role="button">View</a>
+													</p>
+												</div>
+											</div>
+										</div>
+										<p ng-if="awards.length == 0">No awards submitted yet</p>
+									</div>
+								</div>
+							</div>
+						</uib-tab -->
+						<!--uib-tab index="4" heading="Followers" select="getFollowers()">
+							<div class="row padding-vertical">
+								<div class="container">
+									<div class="row text-center">
+										<div ng-if="followers == undefined">
+											<p class="loading">Loading followers</p>
+										</div>
+										<div ng-repeat="post in followers" class="col-md-3 col-sm-6" ng-if="followers !== 'undefined' && followers.length > 0">
+											<div class="card_container">
+												<div class="img_card">
+													<img ng-src="{{post.avatar}}" alt="{{post.title.rendered}}" style="width:100%">
+												</div>
+												<div class="img_card_details">
+													<div class="enter_link">
+														<a ng-href="members/{{post.ID}}" class="btn btn-default" role="button" ng-bind-html="post.user_login"></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div ng-if="followers.length == 0">
+											<p class="empty">No followers yet</p>
+										</div>
+										<button ng-hide="getting_followers || !follower_next_page" ng-click="moreFollowers()">Loading More</button>
+										<p ng-show="getting_followers">Loading data...</p>
+									</div>
+								</div>
+							</div>
+						</uib-tab>
+						<uib-tab index="5" heading="Following" select="getFollowing()">
+							<div class="row padding-vertical">
+								<div class="container">
+									<div class="row text-center">
+										<div ng-if="following == undefined">
+											<p class="loading">Loading following</p>
+										</div>
+										<div ng-repeat="post in following" class="col-md-3 col-sm-6" ng-if="following !== 'undefined' && following.length > 0">
+											<div class="card_container">
+												<div class="img_card">
+													<img ng-src="{{post.avatar}}" alt="{{post.title.rendered}}" style="width:100%">
+												</div>
+												<div class="img_card_details">
+													<div class="enter_link">
+														<a ng-href="members/{{post.ID}}" class="btn btn-default" role="button" ng-bind-html="post.user_login"></a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div ng-if="following.length == 0">
+											<p class="empty">Not following anyone yet</p>
+										</div>
+										<button ng-hide="getting_following || !following_next_page" ng-click="moreFollowing()">Load more</button>
+										<p ng-show="getting_following">Loading data...</p>
+									</div>
+								</div>
+							</div>
+						</uib-tab-->
+					</uib-tabset>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

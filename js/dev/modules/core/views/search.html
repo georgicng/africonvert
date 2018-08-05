@@ -1,0 +1,129 @@
+<div class="container">
+  <div class="row">
+
+    <div class="search_header col-sm-12 col-md-12">
+      <input type="text" class="input_s" size="" placeholder="Search" ng-model="term" name="srch-term" id="srch-term">
+      <div class="input-group-btn">
+        <button id="s_btn_close" ng-click="search(term)" class="btn btn-default">
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+    <!--/titl_bg_img-->
+  </div>
+  <!-- /Main Background img row-->
+</div>
+<!--/Main Background img container-->
+
+  <div class="row">
+
+    <div class="container">
+      <div class="col-sm-12 col-md-12 full_width bg_c" ng-show="getItemCount('user') > 0">
+        <div class="s_title">Users </div>
+        <div class="s_gap"> </div>
+
+        <div ng-repeat="post in posts | filter:{ type: 'user' }" class=" col-sm-4 col-md-4 " id="img_card_div">
+          <div class="card_container">
+            <div class="img_card">
+              <img ng-src="{{post.profile_pic}}" alt="{{}}" style="width:100%"> </div>
+            <div class="img_card_details">
+              <div class="details">{{post.user_info.username}}</div>
+              <div class="enter_link">
+                <a ng-href="members/{{post.id}}" class="btn btn-default" role="button">View Profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/First col-->
+
+      </div>
+      <!--/Users-->
+
+      <div class="col-sm-12 col-md-12 full_width bg_c" ng-show="getItemCount('contests') > 0">
+        <div class="s_title">CONTEST </div>
+
+        <div ng-repeat="post in posts | filter:{ type: 'contests' }" class="contest col-xs-6 col-sm-4 col-md-3 " id="img_card_div">
+          <div class="card_container">
+            <div class="img_card">
+              <img src="{{post.featured_image_thumbnail_url}}" alt="{{post.title.rendered}}" style="width:100%"> 
+              <span class="tag">{{post.acf.stage}}</span>
+            </div>
+            <div class="img_card_details">
+              <div class="details" ng-bind-html="post.title.rendered"></div>
+              <div class="details">{{post.acf.price}} </div>
+              <div class="enter_link">
+                <a href="{{getContestPath(post)}}"> View </a>
+              </div>
+            </div>
+          </div>
+          <!--/img_card-->
+
+
+        </div>
+        <!--/First col-->
+
+
+      </div>
+      <!---->
+
+
+      <div class="col-sm-12 col-md-12 full_width bg_c" ng-show="getItemCount('submissions') > 0">
+        <div class="s_title">Entries </div>
+        <div class="s_gap"> </div>
+
+        <div ng-repeat="post in posts | filter:{ type: 'submissions' }" class=" col-xs-6 col-sm-4 col-md-3 " id="img_card_div">
+          <div class="card_container">
+            <div class="img_card">
+              <img ng-src="{{post.featured_image_thumbnail_url?post.featured_image_thumbnail_url:post.acf.thumbnail}}" alt="{{post.title.rendered}}"
+                style="width:100%">
+            </div>
+            <div class="img_card_details">
+              <div class="details" ng-bind-html="post.title.rendered"></div>
+              <div class="details">
+                <a ng-href="members/{{post.author}}" role="button" ng-bind-html="post.author_name"></a>
+              </div>
+              <div class="enter_link">
+                <a ng-href="watch/{{post.id}}" class="btn btn-default" role="button">View Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/First col-->
+
+      </div>
+      <!--/Entries-->
+
+
+
+      <div class="col-sm-12 col-md-12 full_width bg_c" ng-show="getItemCount('post') > 0">
+        <div class="s_title">Blog </div>
+        <div class="s_gap"> </div>
+
+        <div ng-repeat="post in posts | filter:{ type: 'post' }" class=" col-xs-6 col-sm-4 col-md-3 " id="img_card_div">
+          <div class="card_container">
+            <div class="img_card">
+              <img ng-src="{{post.featured_image_thumbnail_url}}" alt="{{}}" style="width:100%"> </div>
+            <div class="img_card_details">
+              <div class="details" ng-bind-html="post.title.rendered"></div>
+              <div class="enter_link">
+                <a ng-href="blog/{{post.id}}" class="btn btn-default" role="button">Read More ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/First col-->
+
+      </div>
+
+      <p class="empty" ng-if="posts.length == 0">Nothing found</p>
+      <!---->
+      <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="12" previous-text="<"
+        next-text=">" force-ellipses="true" max-size="4" template-url="af/template/pagination/pagination.html" ng-if="totalItems > 12"></ul>
+
+    </div>
+    <!--/left-->
+
+  </div>
+  <!-- /Main row-->
+
+<!--/Main container-->

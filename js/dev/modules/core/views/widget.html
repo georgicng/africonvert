@@ -1,0 +1,6 @@
+<div>
+    <div class="ajax-loader" ng-show="loading" style="text-align:center;width:100%" >
+        <img src="wp-content/themes/africonvert/img/loading.gif" style="vertical-align:middle;"/>
+    </div>
+    <ng-bind-html ng-bind-html="html | to_trusted" ng-hide="loading"></ng-bind-html>
+</div>

@@ -1,0 +1,28 @@
+<!--div class="modal-header">
+  <h3 class="modal-title" id="modal-title">Vote <strong>{{resolve.params.postName}}</strong>?</h3>
+</div-->
+<!--form role="form" ng-submit='vote(user)' name='voteForm'-->
+  <div class="modal-body">
+    <!--div class="row">
+      <div class="col-xs-12 col-md-offset-3 col-md-6 form-group">
+        <label>Username</label>
+        <input type="text" ng-model="user.username" class="form-control" placeholder="Enter Username" required>
+      </div>
+    </div>
+     <div class="row">
+      <div class="col-xs-12" style="text-align:center">
+          <div vc-recaptcha ng-model="user.captcha" key="'6LceECMUAAAAABkHS0c1RLV1wRGlx9Z9RnX18v_i'"></div>
+      </div>
+    </div-->
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Want to cast your vote for {{resolve.params.postName}}?</p>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">    
+    <button ng-click="vote()" class="btn btn-primary">Yes</button>
+    <button ng-click="cancel()" class="btn btn-default">No</button>
+  </div>
+<!--/form-->
+

@@ -1,0 +1,16 @@
+<li uib-dropdown on-toggle="toggled(open)">
+      <a href id="simple-dropdown" uib-dropdown-toggle>
+        <span class="glyphicon glyphicon-inbox"></span><span class="badge" ng-if="count !== undefined">{{count}}</span>
+</a>
+<ul class="dropdown-menu" uib-dropdown-menu ng-if="notifications.length !== undefined">
+  <li ng-repeat="notif in notifications">
+    <img ng-src="{{notif.avatar}}" style="float:left">
+    <p ng-bind-html="notif.description"></p>
+  </li>
+</ul>
+<div class="dropdown-menu" uib-dropdown-menu ng-if="notifications.length === undefined">
+  <p>
+    Nothing to show
+  </p>
+</div>
+</li>

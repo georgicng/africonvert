@@ -1,0 +1,30 @@
+<div class="container-fliud" id="container-fliud_bg">
+    <div class="row">
+        <div class="titl_bg_img  col-sm-12 col-md-12">Past {{data.pageTitle}}</div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-12 full_width bg_c" id="full_container">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 " id="img_card_div" ng-repeat="post in data.posts">
+                <div class="card_container">
+                    <div class="img_card"><img ng-src="{{post.featured_image_thumbnail_url}}" alt="{{post.title.rendered}}" style="width:100%">                        </div>
+                    <div class="vimg_card_details">
+                        <div class="details"><b>{{post.title.rendered}}</b> </div>
+                        <div class="details"><b>{{post.acf.price}}</b> </div>
+                        <div class="enter_link"><a ng-href="archive/{{post.id}}">Learn More <span class="glyphicon glyphicon-chevron-right"></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <p class="empty" ng-if="data.posts.length == 0">No contests found</p>
+            <div class="paging_div">
+                <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()" items-per-page="12" previous-text="<"
+                    next-text=">" force-ellipses="true" max-size="4" template-url="af/template/pagination/pagination.html" ng-if="totalItems > 12"></ul>
+            </div>
+            <div class="news_l_container">
+                <sidebar id="'sidebar-3'"></sidebar>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: fine;
+    src: url(fine.woff);
+}
+
+body#tinymce.wp-editor {
+    font-family: fine, Arial, Helvetica, sans-serif;
+    margin: 10px;
+}

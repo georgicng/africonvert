@@ -1,0 +1,126 @@
+/* CSS CONT....*/
+
+.v_grid_container {
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.v_grid img {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 3px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.dis_grid_container {
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.dis_grid img {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 3px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.dis_info_div {
+    padding: 10px;
+    color: #960000;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.dis_info_div a {
+    padding: 10px;
+    color: #960000;
+    text-align: center;
+    text-decoration: none;
+}
+
+.dis_info_div a:hover {
+    padding: 10px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* CONTEST  */
+
+#full_container {
+    background: white;
+    height: auto;
+    padding: 0px;
+    position: relative;
+}
+
+.guage_div {
+    margin: 3px 0px;
+    padding: 0px 0px;
+    border: 0px solid whitesmoke;
+    font-size: 12px;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.guage_in {
+    padding: 9px 10px;
+    background: #DDF775;
+    float: left;
+    border-radius: 2px;
+}
+
+.paging_div {
+    width: 100%;
+    padding: 20px;
+    text-align: right;
+}
+
+.paging_div .num {
+    padding: 3px 7px;
+    background: gray;
+    border-radius: 3px;
+}
+
+.paging_div .next a {
+    padding: 3px 5px;
+    color: gray;
+    text-decoration: none;
+}
+
+.paging_div .next a :hover {
+    padding: 3px 5px;
+    color: black;
+    text-decoration: none;
+}
+
+#profile_pic_div {
+    padding: 10px 0px 10px 0px;
+    margin: 0 auto;
+}
+
+.pic_div {
+    padding: 5px;
+    color: #960000;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.c_avater_div {
+    width: 300px;
+    height: 300px;
+    padding: 40px 40px 0px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 360px) {
+    .dis_info_div {
+        padding: 5px;
+        color: #960000;
+        text-align: center;
+        font-size: 0.8em;
+    }
+    .full_width {
+        width: 100%;
+    }
+}

@@ -1,0 +1,125 @@
+<div class="container-fliud" id="container-fliud_bg">
+  <div class="row">
+
+    <div class="titl_bg_img_2  col-sm-12 col-md-12" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url({{user.fields.cover}});background-size: cover; background-position: center">
+      <!--div class="header">
+        <h1>Your Profile</h1>
+      </div-->
+      <div class="ic_span" uib-dropdown style="position: absolute; right: 10%; bottom: 10%;">          
+        <a href="" uib-dropdown-toggle><i class="fa fa-camera"></i></a> 
+        <ul uib-dropdown-menu class="dropdown-menu">
+          <li><a type="file" ngf-select="uploadImage($file, $invalidFiles, 'cover_pic')" accept="image/*" style="cursor:pointer;">Change Cover Image</a></li>
+          <li><a ng-click="removeCover()">Remove Cover Image</a></li>
+        </ul>
+      </div>
+    </div>
+      <!--button type="file" ngf-select="uploadImage($file, $invalidFiles, 'cover_pic')" accept="image/*" class="sub_but" >Change Cover</button>
+      <button ng-click="removeCover()" class="sub_but" >Remove Cover</button-->
+      </div>
+    <!--/titl_bg_img-->
+<div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-3  " id="profile_pic_div">
+      <div class="text-center">
+
+        <div class="a_img"><img ng-src="{{user.fields.avatar}}" alt="{{user.name}} profile picture" style="max-width:100%">
+        </div>
+        <div class="joined"> Joined : {{user.joined}} </div>
+        <div class="joined"> Last Login : {{user.last-login}} </div>
+
+        <form>
+
+          <div class="up_load_div">
+            <button type="file" ngf-select="uploadImage($file, $invalidFiles, 'profile_pic')" accept="image/*" class="sub_but" >Change Avatar</button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+    <!--/ ends-->
+
+    <div class="col-sm-12 col-md-8 col-lg-9" id="dynamic_div">
+      <div class="dynamic_div_inn">
+
+        <div class="dynamic_tabs" id="dynamic_tabs">
+
+          <ul class="nav nav-pills">
+            <li class="active"><a data-toggle="pill" href="#home">Personal Info  </a></li>
+
+            <li><a data-toggle="pill" href="#change_password">  Change Password </a> </li>
+
+          </ul>
+
+          <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+              <div class="main_form_div">
+                <form method="post" role="form" ng-submit='updateProfile(account)' name="profileForm" id="p_form">
+
+                  <span class="lebel">First Name</span><br>
+                  <input type="text" ng-model="account.first_name" class="p_input"></input>
+                  <br>
+
+                  <span class="lebel">Last Name</span><br>
+                  <input type="text" ng-model="account.last_name" class="p_input"></input>
+                  <br>
+
+                  <span class="lebel">Phone Number</span><br>
+                  <input type="text" ng-model="account.fields.phone" class="p_input"></input>
+                  <br>
+
+                  <span class="lebel">Email Address</span><br>
+                  <input type="text" ng-model="account.email" class="p_input" disabled></input>
+                  <br>
+
+                  <span class="lebel">Bio</span><br>
+
+                  <textarea rows="4" ng-model="account.description" class="p_text_area" cols="50">
+     </textarea>
+                  <br>
+                  <div class="p_but_div">
+                    <input type="hidden" ng-model="account.id"></input>
+                    <input type="submit" ng-disabled="profileForm.$invalid" class="p_but" value="Save Changes"></input>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- profile-->
+
+            <div id="change_password" class="tab-pane fade">
+              <div class="main_form_div">
+                <form method="post" role="form" ng-submit='changePassword(auth)' name="passwordForm" id="p_form">
+
+                  <!--span class="lebel">Old Password</span><br>
+                  <input type="text" class="p_input" ng-model="auth.oldPassword" name="oldPassword" required></input>
+                  <br-->
+
+                  <span class="lebel">New Password</span><br>
+                  <input type="password" ng-model="auth.newPassword" name="newPassword" class="p_input" required></input>
+                  <br>
+
+                  <span class="lebel">Confirm Password</span><br>
+                  <input type="password" match-password="newPassword" name="confirmPassword" ng-model="auth.confirmPassword" class="p_input"
+                    required></input>
+                  <br>
+
+                  <br>
+                  <div class="p_but_div">
+                    <input type="submit" ng-disabled="passwordForm.$invalid" class="p_but" value="Save Changes"></input>
+                  </div>
+                </form>
+              </div>
+            </div>
+         </div>
+        </div>
+        <!--/dynamic_tabs-->
+      </div>
+      <!--/dynamic_div_inn  -->
+    </div>
+    </div>
+    <!--/dynamic_div-->
+
+  </div>
+  <!-- /Main Background img row-->
+</div>
+<!--/Main Background img container-->

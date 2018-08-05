@@ -1,0 +1,121 @@
+<div class="container-fliud" id="container-fliud_bg">
+    <div class="row">
+        <div class="titl_bg_img_2 col-md-12" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url({{post.featured_image_cover_url}}); background-size:cover; background-position:center">
+            <div class="header">
+                <h1 ng-bind-html="post.title.rendered"></h1>
+                <h3>PRIZE : {{post.acf.price}} </h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 text-center share-container">
+                <span class="share">Share via:</span>
+                <sn-addthis-toolbox data-url="http://www.afriflow.com" data-title="Afriflow" data-description="contest website" class="addthis_toolbox addthis_default_style sharing-buttons">
+                    <a href class="addthis_button_facebook facebook">
+                        <i class="fa fa-facebook"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href class="addthis_button_twitter twitter">
+                        <i class="fa fa-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    <a class="addthis_button_whatsapp whatsapp">
+                        <i class="fa fa-whatsapp"></i>
+                        <span>Whatsapp</span>
+                    </a>
+                </sn-addthis-toolbox>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-md-offset-1">
+                <div class="card">
+                    <uib-tabset active="0" type="tabs">
+                        <uib-tab index="0" heading="Brief">
+                            <div ng-bind-html="post.content.rendered | to_trusted" class="lead"></div>
+                        </uib-tab>
+                        <uib-tab index="1" heading="How to Apply">
+                            <div ng-bind-html="post.acf.entry_requirements | to_trusted" class="lead"></div>
+                        </uib-tab>
+                        <uib-tab index="2" heading="Terms" ng-if="post.acf.toc">
+                            <div ng-bind-html="post.acf.toc | to_trusted" class="lead"></div>
+                        </uib-tab>
+                        <uib-tab index="3" heading="FAQ" ng-if="post.acf.faq">
+                            <div ng-bind-html="post.acf.faq | to_trusted" class="lead"></div>
+                        </uib-tab>
+                        <uib-tab index="4" heading="Entries" select="getEntries()" ng-if="post.entry_count > 0">
+                            <div ng-if="entries == undefined">
+                                <p class="loading">Loading entries</p>
+                            </div>
+                            <div class="row" ng-if="entries !== 'undefined' && entries.length > 0">
+                                <div ng-repeat="post in entries" class="col-md-4 col-lg-3 col-sm-6 col-xs-12" id="img_card_div">
+                                    <div class="card_container">
+                                        <div class="img_card">
+                                            <img ng-src="{{post.featured_image_thumbnail_url?post.featured_image_thumbnail_url:post.acf.thumbnail}}" alt="{{post.title.rendered}}"
+                                                style="width:100%">
+                                        </div>
+                                        <div class="img_card_details">
+                                            <div class="details" ng-bind-html="post.title.rendered"></div>
+                                            <div class="details">
+                                                <a ng-href="members/{{post.author}}" class="btn btn-default" role="button" ng-bind-html="post.author_name"></a>
+                                            </div>
+                                            <div class="enter_link">
+                                                <a ng-href="watch/{{post.id}}" class="btn btn-default" role="button">View</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-if="entries.length == 0">
+                                <p class="empty">No entries submitted yet</p>
+                            </div>
+                            <div class="paging_div" ng-show="! getting_entries && entries_next_page > 1">
+                                <button class="btn btn-success" ng-click="moreEntries()">Load More</button>
+                            </div>
+
+                        </uib-tab>
+                        <uib-tab index="5" heading="Discussions ({{post.comment_count.approved}})">
+                            <comments post="post.id"></comments>
+                        </uib-tab>
+                        <uib-tab index="6" heading="{{(post.user_entry)? 'Your Entry' : 'Enter Now'}}">
+                            <div class="row padding-vertical" ng-if="!post.user_entry">
+                                <div class="lead" ng-show="user === undefined">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <p class="notice notice--info text-center">Please register or login to submit to contest.</p>
+                                        </div>
+                                        <div class="col-xs-3 col-xs-offset-3">
+                                            <a href="#" class="button button--block button--primary js-superModal" ng-click="register()">Sign Up</a>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <a href="#" class="button button--block js-superModal" ng-click="login()">Login</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="lead" ng-show="user !== undefined && user.user_data.fields.confirmed == true">
+                                    <div class="row">
+                                        <div class="col-xs-12 text-center">
+                                            <span ng-show="success">Upload Successful</span>
+                                            <span class="err" ng-show="error">{{errorMsg}}</span>
+                                        </div>
+                                        <upload validation="post.validation" project="post.acf.wistia_project_id" category="id" success="postEntry" error="fileUploadError"></upload>
+                                    </div>
+                                </div>
+                                <div class="lead" ng-show="user !== undefined && user.user_data.fields.confirmed != true">
+                                    <p class="notice notice--info text-center">You are required to complete your registration by confirming your email address before
+                                        entering into any contest.
+                                        <a href="#" class="button button--block button--primary js-superModal" ng-click="verify()">Resend confirmation email</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row" ng-if="post.user_entry">
+                                <div class="comment_img ">
+                                    <img ng-src="{{post.featured_image_url || post.user_entry.acf.thumbnail}}" style="height:366px;width:100%">
+                                </div>
+                                <h3 style="text-align:center">Status: {{getStatus(post.user_entry.post_status)}}</h3>
+                            </div>
+                        </uib-tab>
+                    </uib-tabset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

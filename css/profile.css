@@ -1,0 +1,99 @@
+.joined {
+    font-size: 10px;
+}
+
+.main_form_div {
+    padding: 10px 20px 10px 20px;
+    margin: 0 auto;
+    height: auto;
+    max-width: 100%;
+}
+
+.p_input {
+    padding: 6px;
+    border-radius: 3px;
+    border: solid 1px gray;
+    width: 100%;
+}
+
+.p_text_area {
+    max-width: 660px;
+    padding: 0px;
+    border-radius: 3px;
+    border: solid 1px gray;
+    width: 100%;
+}
+
+.lebel {
+    color: #980000;
+}
+
+.p_but_div {
+    margin: 10px 0px;
+}
+
+.p_but {
+    padding: 10px;
+    background: #005D28;
+    border: none;
+    color: white;
+    outline: none;
+    border-radius: 3px;
+}
+
+.p_but:hover {
+    padding: 10px;
+    background: gray;
+    border: none;
+    color: white;
+    outline: none;
+    border-radius: 3px;
+}
+
+.up_load_div {
+    max-width: 200px;
+    padding: 4px 0;
+    color: white;
+}
+
+.up_but {
+    padding: 5px;
+    border-radius: 3px;
+    background: #005D28;
+    max-width: 200px;
+}
+
+.up_but:hover {
+    padding: 5px;
+    border-radius: 3px;
+    background: gray;
+    max-width: 200px;
+}
+
+.sub_but {
+    padding: 5px 20px;
+    border-radius: 3px;
+    background: #005D28;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+.sub_but:hover {
+    padding: 5px 20px;
+    border-radius: 3px;
+    background: gray;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+    #profile_pic_div {
+        padding: 40px 0px 40px 0px;
+        margin: 0 auto;
+    }
+    .p_avater_div {
+        float: right;
+    }
+}

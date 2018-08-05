@@ -1,0 +1,42 @@
+#b_tabon1 {
+    display: none;
+}
+
+#b_tabon2 {
+    display: none;
+}
+
+#b_tabon3 {
+    display: none;
+}
+
+#b_taboff1 {
+    display: block;
+    cursor: pointer;
+}
+
+#b_taboff2 {
+    display: block;
+    cursor: pointer;
+}
+
+#b_taboff3 {
+    display: block;
+    cursor: pointer;
+}
+
+#blog_main_div {
+    display: block;
+}
+
+#blog_main_div_1 {
+    display: none;
+}
+
+#blog_main_div_2 {
+    display: none;
+}
+
+#blog_main_div_3 {
+    display: none;
+}

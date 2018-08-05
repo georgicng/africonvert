@@ -1,0 +1,24 @@
+<div class="container-fliud" id="container-fliud_bg">
+    <div class="row">
+
+        <div class="titl_bg_img  col-sm-12 col-md-12">Account Verification</div>
+        <!--/titl_bg_img-->
+    </div>
+    <!-- /Main Background img row-->
+</div>
+<div class="container">
+    <div class="row">
+        <div ng-if="confirmed">
+            <p class="empty">Your account has been verified</p>
+            <a href="/home"> Go Home </a>
+            <a ng-click="login()"> Login </a>
+        </div>
+        <div ng-if="!confirmed">
+            <div ng-if="user !== undefined">
+                <p class="empty">Invalid token! Should we resend the verification email? </p>
+                <a ng-click="verify()">Resend verification email</a>
+            </div>
+            <p ng-if="user === undefined" class="empty"> Invalid Token, please <a ng-click="login()">login</a> to resend verification email</p>
+        </div>
+    </div>
+</div>

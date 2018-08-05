@@ -1,0 +1,61 @@
+<div class="container-fliud" id="container-fliud_bg">
+    <div class="row">
+        <div class="titl_bg_img_2  col-sm-12 col-md-12" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url({{post.featured_image_cover_url}}); background-size:cover; background-position:center">
+            <div class="header">
+                <h1>{{data.pageTitle}}</h1>
+                <h3>PRIZE : {{post.acf.price}} </h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Brief</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p ng-bind-html="post.content.rendered" class="lead ng-binding" ellipsis></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-12 vote_bar">
+                <span>Total Entries :
+                    <b>{{entries_count}} </b> | </span>
+                <span ng-if="wistia_stat.play_count">Total Views :
+                    <b>{{wistia_stat.play_count}} </b> | </span>
+                <span>Total Votes :
+                    <b>{{post.vote_count}} </b>
+                </span>
+            </div>
+            <p class="loading" ng-if="post == undefined">Loading contests</p>
+            <div class="col-xs-12 col-sm-6 col-md-4 col-g-3" id="img_card_div" ng-repeat="entry in entries">
+                <div class="card_container">
+                    <div class="img_card">
+                        <img ng-src="{{entry.featured_image_thumbnail_url?entry.featured_image_thumbnail_url:entry.acf.thumbnail}}" alt="{{entry.title.rendered}}"
+                            style="width:100%"> </div>
+                    <div class="vimg_card_details">
+                        <div class="details" ng-bind-html="entry.title.rendered"></div>
+                        <div class="details">Vote Count :
+                            <b>{{entry.vote_count}}</b>
+                        </div>
+                        <div class="enter_link">
+                            <a ng-href="vote/{{post.id}}/{{entry.id}}">VOTE NOW
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="empty" ng-if="entries.length == 0 empty">No entry found</p>
+            <p class="error" ng-if="entries.length == null">Error 404</p>
+            <div class="paging_div" ng-show="! getting_entries && entries_next_page > 1">
+                <button class="btn btn-md btn-success" ng-click="moreEntries()">Load More</button>
+            </div>
+            <div class="news_l_container">
+                <sidebar id="'sidebar-3'"></sidebar>
+            </div>
+        </div>
+    </div>
+</div>

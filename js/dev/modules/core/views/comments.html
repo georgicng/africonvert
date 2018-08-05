@@ -1,0 +1,16 @@
+<div>
+    <comment-form post="post" ng-show="comments != null"></comment-form>
+    <div ng-show="comments.length > 0">
+        <comment ng-repeat="comment in comments" post="post" comment="comment"></comment>
+    </div>
+    <div ng-show="comments.length == 0">
+        <p class="empty">No comments found, be the first to comment</p>
+    </div>
+    <div ng-show="comments == undefined">
+        <p class="loading">Loading....</p>
+    </div>
+    <div class="paging_div" ng-show="! getting_comments && comment_next_page > 1">
+        <button class="btn btn-md btn-success" ng-click="moreComments()">Load More</button>
+    </div>
+    <p class="loading" ng-show="getting_comments">Loading data...</p>
+</div>

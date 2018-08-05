@@ -1,0 +1,23 @@
+<form role="form" ng-submit="savecomment(openComment)" name="commentForm">
+    <div class="row" ng-show="isLoggedIn() == false">
+        <div class="col-xs-12 col-md-6 form-group">
+            <input type="text" id="name" name="name" ng-model="openComment.author_name" placeholder="Name" class="com_input form-control"
+                ng-required="isLoggedIn() == false" />
+        </div>
+        <div class="col-xs-12 col-md-6 form-group">
+            <input type="email" name="email" id="email" ng-model="openComment.author_email" placeholder="Email Address" class="com_input form-control"
+                ng-required="isLoggedIn() == false" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 form-group">
+            <textarea class="com_input form-control" rows="3" ng-model="openComment.content" required></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 form-group">
+            <button type="submit" ng-disabled="commentForm.$invalid || disable" class="btn btn-primary"> {{ submitButtonText }}</button>
+            <button ng-click="hide()" class="btn btn-primary" ng-if="parent !== undefined"> Cancel </button>
+        </div>
+    </div>
+</form>

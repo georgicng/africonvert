@@ -1,0 +1,16 @@
+<div class="container">
+
+  <div class="row">
+    <!--top_hrader-->
+    <div class="col-xs-12 col-md-9 full_width" id="left_container">
+      <!-- sidebar id="'sidebar-6'"></sidebar-->
+      <div ng-bind-html="post.content.rendered | to_trusted"></div>      
+    </div>
+    <div class="col-xs-12 col-md-3 offcanvas-right " id="right_container">
+      <sidebar id="'sidebar-1'"></sidebar>
+    </div>
+
+  </div>
+  <!-- /Main row-->
+</div>
+<!--/

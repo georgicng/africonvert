@@ -1,0 +1,59 @@
+<div class="container-fliud" id="container-fliud_bg">
+  <div class="row">
+      <div class="titl_bg_img_2  col-sm-12 col-md-12" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url({{post.featured_image_cover_url}}); background-size:cover; background-position:center">
+          <div class="header"><h1 ng-bind-html="post.title.rendered"></h1>
+          <h3><span> {{post._embedded.author.name}}</span> </h3>
+          </div>
+        </div>
+    <!--div class="titl_bg_img  col-sm-12 col-md-12">BLOG </div-->
+    <!--/titl_bg_img-->
+  </div>
+  <!-- /Main Background img row-->
+</div>
+<!--/Main Background img container-->
+
+<div class="container">
+  <div class="row">
+    <!--top_hrader-->
+    <div class="col-sm-12 col-md-12 full_width bg_c" id="full_container">
+      <div class="col-sm-12 col-md-9" id="blog_leftside">
+        <!--div class="blog_title_header" ng-bind-html="post.title.rendered"></div>
+        <div class="user_posted"><span> {{post._embedded.author.name}} | {{post.date | date:"dd MMM yyyy" }}</span> </div-->
+        <div class="blog_img_container">
+          <!--div class="blog_img_div"> <img alt="{{post.title.rendered}}" ng-src="{{post.featured_image_thumbnail_url}}"> </div-->
+          <div class="blog_content_div content" ng-bind-html="post.content.rendered">
+          </div>
+        </div>
+        <div class="sh_com_div">
+          <span class="ic_span" uib-dropdown>          
+            <a href="" uib-dropdown-toggle><i class="fa fa-share-alt"></i> Share</a> 
+            <div uib-dropdown-menu class="dropdown-menu">
+              <sn-addthis-toolbox data-url="http://www.afriflow.com" data-title="Afriflow" data-description="contest website" class="addthis_toolbox addthis_default_style sharing-buttons">
+                <a href class="addthis_button_facebook facebook"><i class="fa fa-facebook"></i>Facebook</a>
+                <a href class="addthis_button_twitter twitter"><i class="fa fa-twitter"></i>Twitter</a>        
+                <a class="addthis_button_whatsapp whatsapp"><i class="fa fa-whatsapp"></i>Whatsapp</a>
+              </sn-addthis-toolbox>
+            </div>
+          </span>
+          <span class="ic_span" ng-hide="comment_active == true">
+            <a ng-click="loadComments()"><i class="fa fa-comments-o"></i> {{(post.comment_count.approved > 0)? "View All " + post.comment_count.approved +" Comments":"Comment"}} </a> 
+          </span>          
+        </div>
+        <div id="comments"></div>
+        <div class="col-sm-12 col-md-12 full_width bg_c">
+          <div class="similer_s_div_gap"> </div>
+          <widget name="'Af_Related_Posts'" instance="{post: post.id}" args="{}"></widget>
+        </div>
+        <!---->
+      </div>
+      <!--blog_leftside-->
+      <div class="col-sm-12 col-md-3" id="blog_rightside">
+        <!--log_rightside-->
+        <sidebar id="'sidebar-2'"></sidebar>
+      </div>
+      <!--/blog_rightside-->
+    </div>
+    <div class="com_gap col-sm-12 col-md-12"> </div>
+  </div>
+  <!--/left-->
+</div>

@@ -1,0 +1,62 @@
+<div class="container-fliud" id="container-fliud_bg">
+	<div class="titl_bg_img_2  col-sm-12 col-md-12" style="linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), background-image: url({{post.featured_image_cover_url}}); background-size:cover; background-position:center">
+		<div class="header">
+			<h1 ng-bind-html="post.title.rendered"></h1>
+			<h3>PRIZE : {{post.acf.price}} </h3>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 text-center" style="margin:10px;padding:10px">
+			<span class="share">Share via:</span>
+			<sn-addthis-toolbox data-url="http://www.afriflow.com" data-title="Afriflow" data-description="contest website" class="addthis_toolbox addthis_default_style sharing-buttons">
+				<a href class="addthis_button_facebook facebook">
+					<i class="fa fa-facebook"></i>Facebook</a>
+				<a href class="addthis_button_twitter twitter">
+					<i class="fa fa-twitter"></i>Twitter</a>
+					<a class="addthis_button_whatsapp whatsapp"><i class="fa fa-whatsapp"></i>Whatsapp</a>
+			</sn-addthis-toolbox>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-md-10 col-md-offset-1">
+			<div class="card">
+				<uib-tabset active="active">
+					<uib-tab index="0" heading="Brief">
+						<p ng-bind-html="post.content.rendered" class="lead"></p>
+					</uib-tab>
+					<uib-tab index="1" heading="Terms">
+						<p ng-bind-html="post.acf.toc" class="lead"></p>
+					</uib-tab>
+					<uib-tab index="2" heading="FAQ">
+						<p ng-bind-html="post.acf.entry_requirements" class="lead"></p>
+					</uib-tab>
+					<uib-tab index="3" heading="Entries" select="getEntries()">
+						<p class="loading" ng-if="entries == undefined">Loading entries</p>
+						<div ng-repeat="post in entries" class="col-md-3 col-sm-6 hero-feature" ng-if="entries != 'undefined' && entries.length != 0">
+							<div class="thumbnail">
+								<img ng-src="{{post.featured_image_thumbnail_url?post.featured_image_thumbnail_url:post.acf.thumbnail}}" alt="{{post.title.rendered}}">
+								<div class="caption">
+									<h3 ng-bind-html="post.title.rendered"></h3>
+									<p>
+										<a ng-href="profile/{{post.author}}" role="button" ng-bind-html="post.author_name"></a>
+									</p>
+									<p>
+										<a ng-href="watch/{{post.id}}" class="btn btn-default" role="button">View</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<p class="empty" ng-if="entries.length == 0">No entries submitted yet</p>
+					</uib-tab>
+					<uib-tab index="4" heading="Discussions">
+						<comments post="post.id"></comments>
+					</uib-tab>
+					<uib-tab index="5" heading="Winners">
+					</uib-tab>
+				</uib-tabset>
+			</div>
+		</div>
+	</div>
+</div>

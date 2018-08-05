@@ -1,0 +1,9 @@
+{
+    "name": "afriflow/theme",
+    "require": {
+        "league/plates": "*",
+		"codeguy/upload":  "*",
+		"automattic/wistia-php": "*"
+    }
+	
+}

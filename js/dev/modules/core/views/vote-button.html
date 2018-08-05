@@ -1,0 +1,4 @@
+<div>
+    <button ng-if="canVote == true && voted != true" ng-click="vote()" class="btn btn-lg btn-block btn-success">Vote</button>
+    <button ng-if="canVote == false || voted == true" disabled class="btn btn-lg btn-block disabled">Voted Today</button>
+</div>
