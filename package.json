@@ -16,6 +16,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "config:sync": "ftp-config.sh",
+        "sync:init": "git ftp init",
         "sync": "git ftp push",
         "sync:test": "git ftp push -D"
     },
