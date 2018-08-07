@@ -5,11 +5,9 @@ $(document).ready(function () {
       $(".input_s_div").css({
         display: "block"
       })
-
       $(".s_btn_div").css({
         display: "none"
       })
-
     });
 
     $(".s_btn2").click(function () {
